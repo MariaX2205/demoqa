@@ -1,13 +1,13 @@
 from pages.demoqa import DemoQa
 from conftest import browser
-
+from components.components import WebElement
 
 def test_icon_exist(browser):
     demo_page = DemoQa(browser)
     demo_page.visit()
-    demo_page.click_on_the_icon()
+    demo_page.icon.click()
     assert demo_page.equal_url()
-    assert demo_page.exist_icon()
+    assert demo_page.icon.exist()
 
 
 
