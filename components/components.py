@@ -4,10 +4,12 @@ from selenium.common.exceptions import NoSuchElementException
 
 class WebElement:
     def __init__(self, driver, locator=''):
+        self.icon = '#app > header > a > img'
         self.driver = driver
         self.locator = locator
 
-    def click(self):  # click the element:
+
+    def click(self):  # click the element(icon):
         self.driver.find_element(By.CSS_SELECTOR, self.locator).click()
 
     def find_element(self):
