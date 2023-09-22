@@ -8,12 +8,20 @@ class WebElement:
         self.driver = driver
         self.locator = locator
 
-
     def click(self):  # click the element(icon):
         self.driver.find_element(By.CSS_SELECTOR, self.locator).click()
 
     def find_element(self):
         return self.driver.find_element(By.CSS_SELECTOR, self.locator)
+
+    def find_elements(self):
+        return self.driver.find_elements(By.CSS_SELECTOR, self.locator)
+
+    def check_count_elements(self, count: int):
+
+        if len(self.find_elements()) == count:
+            return True
+        return False
 
     def exist(self):
         try:
@@ -24,3 +32,6 @@ class WebElement:
 
     def get_text(self):
         return str(self.find_element().text)
+
+    def visible(self):
+        return self.find_element().is_displayed()

@@ -15,5 +15,4 @@ def test_visit_via_page(browser):
     page1.visit()
     page1.icon.click()
     page = ElementsPage(browser)
-    page.visit()
     assert page.text_in_center.get_text() == 'Please select an item from left to start practice.'
