@@ -14,3 +14,4 @@ class ElementsPage(BasePage):
         self.btn_sidebar_first_checkbox = WebElement(driver,
                                                      'div:nth-child(1) > div > div > div:nth-child(1) > div #item-1')
         self.btns_first_menu = WebElement(driver, 'div:nth-child(1) > div > ul > li')
+        self.size_check = WebElement(driver, 'div > nav')
