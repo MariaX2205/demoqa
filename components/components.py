@@ -2,23 +2,25 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 
+
 class WebElement:
-    def __init__(self, driver, locator=''):
+    def __init__(self, driver, locator='', locator_type='css'):
         self.icon = '#app > header > a > img'
         self.driver = driver
         self.locator = locator
+        self.locator_type = locator_type
 
     def click(self):  # click the element(icon):
-        self.driver.find_element(By.CSS_SELECTOR, self.locator).click()
+        self.driver.find_element(self.get_by_type(), self.locator).click()
 
     def click_force(self):
         self.driver.execute_script("arguments[0].click();", self.find_element())
 
     def find_element(self):
-        return self.driver.find_element(By.CSS_SELECTOR, self.locator)
+        return self.driver.find_element(self.get_by_type(), self.locator)
 
     def find_elements(self):
-        return self.driver.find_elements(By.CSS_SELECTOR, self.locator)
+        return self.driver.find_elements(self.get_by_type(), self.locator)
 
     def check_count_elements(self, count: int):
 
@@ -49,6 +51,36 @@ class WebElement:
     def enter(self):
         self.find_element().send_keys(Keys.ENTER)
 
+    def get_dom_attribute(self, name: str):
+        value = self.find_element().get_dom_attribute(name)  # <- это внутренний метод из апи селениум
 
+        if value is None:
+            return False
+        if len(value) > 0:
+            return value
+        return True
+
+    def get_by_type(self):
+        if self.locator_type == "id":
+            return By.ID
+        elif self.locator_type == "name":
+            return By.NAME
+        elif self.locator_type == "xpath":
+            return By.XPATH
+        elif self.locator_type == "css":
+            return By.CSS_SELECTOR
+        elif self.locator_type == "class":
+            return By.CLASS_NAME
+        elif self.locator_type == "link":
+            return By.LINK_TEXT
+        else:
+            print("Locator type " + self.locator_type + " not correct")
+        return False
+
+    def scroll_to_element(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);", self.find_element())
+
+    def check_css(self, style, value=''):
+        return self.find_element().value_of_css_property(style) == value
 
 
