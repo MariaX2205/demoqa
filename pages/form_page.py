@@ -19,3 +19,4 @@ class FormPage(BasePage):
         # self.state_arrow = WebElement(driver, '#state > div > div.css-1wy0on6')
         self.city = WebElement(driver, '#react-select-4-input')
         # self.city_arrow = WebElement(driver, '#city > div > div.css-1wy0on6')
+        self.user_form = WebElement(driver, '#userForm')
