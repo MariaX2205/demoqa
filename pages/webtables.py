@@ -25,3 +25,5 @@ class Webtables(BasePage):
         self.select_5 = WebElement(driver, 'span.select-wrap.-pageSizeOptions> select > option:nth-child(1)')
         self.page2 = WebElement(driver, 'div > div.-center > span.-pageInfo > span')
         self.jump_to_page = WebElement(driver, ' div > input[type=number]')
+        self.table_1_Column = WebElement(driver, 'div.rt-table > div.rt-thead.-header > div > div:nth-child(1)')
+        self.tableElement = WebElement(driver, 'div.rt-table > div.rt-tbody > div:nth-child(1) > div > div:nth-child(1)')

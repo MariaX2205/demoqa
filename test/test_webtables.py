@@ -52,10 +52,9 @@ def test_next_prev(browser):
     page.select_area.scroll_to_element()
     page.select_area.click()
     page.select_5.click()
-    #
-    # page.previous_btn.scroll_to_element()
+
     assert page.previous_btn.get_dom_attribute('class') == '-btn'
-    assert page.next_button.get_dom_attribute('class') == "-btn"
+    assert page.next_button.get_dom_attribute('class') == '-btn'
 
     for i in range(3):
         page.add_btn.click()
@@ -66,7 +65,6 @@ def test_next_prev(browser):
         page.w_age.send_keys("35")
         page.w_salary.send_keys("100000")
         page.w_department.send_keys("QA")
-        # time.sleep(5)
         page.submit_btn.click()
     time.sleep(2)
 
